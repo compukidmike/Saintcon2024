@@ -28,7 +28,7 @@ We wanted to do something different this year, so this baby is wrist mounted! We
 The wristband will have the "rough" hook side of the velcro and the badge will have the soft loop side. This will hopefully avoid shirt damage if you decide to switch to lanyard mount during the conference.
 
 ## Minibadges
-Every badge will come with a two-slot minibadge klip-on board similar to the one in the drawing. If you'd like to make your own minibadge klip-on board, you can find an example KiCad board in the Klip-ons directory. You can add more minibadge slots, but we suggest that you only connect the I2C lines to two slots. The badge only supports two "game" minibadges at a time and they must be in the two slots that are connected to I2C. You can add more minibadge slots that just have power for displaying extra minibadges.
+Every badge will come with a two-slot minibadge klip-on board similar to the one in the drawing. If you'd like to make your own minibadge klip-on board, you can find an example KiCad board in the Klip-ons directory. You can add more minibadge slots, but we suggest that you only connect the I2C lines to two slots. The badge only supports two official game minibadges at a time and they must be in the two slots that are connected to I2C. You can add more minibadge slots that just have power for displaying extra minibadges.
 
 If you decide to make your own minibadge klip-on, you may notice that the I2C lines are labeled funny. This was done to cut down on the number of wires needed to connect the minibadges. Please keep the I2C connections as they are in the schematic so that your board will work. If you have questions about your board, feel free to reach out on discord and we'd be happy to look at it.
 
