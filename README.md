@@ -20,6 +20,8 @@ You may have noticed in the "Engineering Drawing" above that the screws are labe
 We've provided KiCad libraries to help you get started (You'll find them in the Klip-ons directory).  
 There's a schematic symbol for the power connections and 4 footprints for Left/Right/Upper/Lower Klip-ons. The footprints include the outline of the top of the badge for reference, as well as a simple board outline. You can remove it if you'd like to make your own shape. Just be sure to avoid covering the screen on the badge. The footprints also have keepout areas to help you avoid putting parts on the bottom side of your klip-on where it would interfere with the badge itself.
 
+<b>Please note that the screen opening is NOT centered on the badge.</b> That was a huge oversight on my part but now we're stuck with it. That's why the KiCad footprints include an outline of the entire top of the badge with the screen opening. This becomes an issue because the badge can be flipped over to wear it on the other wrist. Please try to make your klip-ons not interfere with the screen opening in either orientation.
+
 ## Wrist Mount
 We wanted to do something different this year, so this baby is wrist mounted! We'll provide a soft wristband (sweatband) that has velcro on it. If you'd like to wear your badge on your wrist, simply attach the other side of the velcro to the back of your badge. If you'd prefer to stick with a lanyard, we've got a plan for that as well.
 
@@ -48,3 +50,28 @@ https://inkscape.org/
 
 # Now go create something awesome!
 If you run into any problems or have questions, please reach out on the Saintcon discord.
+
+# FAQs
+<b>Q: What more information can you tell me about the badge?</b>  
+A: I'm afraid what has been released, is what you get. It's more than you normally see anyway.  
+
+<b>Q: But, I really want to do X with the badge, can I do it?</b>  
+A: Again, if it works with what has been released, you bet. Go nuts  
+
+<b>Q: Ok, but I REALLY want to have my minibadge interface with the badge game and do something special.</b>  
+A: That's not a question, but let's start with the first bit there. Who told you there was a "game"?  
+
+<b>Q: Oh...uhh...I suppose...I just assumed.</b>  
+A: Again, not a question...you know how these work right?  
+
+<b>Q: Why can't you support {super cool integration} it'll be awesome!</b>  
+A: I'm sure it would be! The reality of the situation is trying to coordinate yours (and everyone elses) cool integrations puts a tremendous amount of stress / work on a small volunteer team that is already running at near capacity. Maybe in the future we'll have a cool framework / spec to make this seamless.but that's just not today.  
+
+<b>Q: Ok, that's fair....so...is there a badge game or not?</b>  
+A: ... Schmaybe ...  
+
+<b>Q: Does v0rtex ever wear colors besides black?</b>  
+A: Yes, once he wore a green shirt. It was a momentous occasion.  
+
+<b>Q: What is the badge's team secret? What keeps them going?</b>  
+A: Little Caesars pepperoni pizza puff thingies... If you haven't tried them...you really... actually...right now...order them. Then return and report.  
