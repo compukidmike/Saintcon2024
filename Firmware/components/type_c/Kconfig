@@ -1,0 +1,32 @@
+menu "Type C Controller"
+    config TYPEC_PI5USB30216C
+        bool "PI5USB30216C Type-C Controller"
+        default y
+        help
+          Say Y here if you want to enable support for the PI5USB30216C Type-C
+          controller
+
+    config TYPEC_ID_GPIO
+        int "GPIO pin for ID"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        depends on TYPEC_PI5USB30216C
+        help
+          GPIO pin number for Type-C identity detection.
+
+          Docs:
+            Open drain output. Asserted low when CC pin detected device attachment when port is a Host (or dual-role acting as Host), otherwise ID is hi-z.
+
+    config TYPEC_ENB_GPIO
+        int "GPIO pin for ENB"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        depends on TYPEC_PI5USB30216C
+        help
+          GPIO pin number for Type-C enable.
+
+          Docs:
+            Active-low enable input pin (with internal weak pull up)
+            ENB=VDD – Disabled/Low Power State
+            ENB=GND – Enabled/Active State
+endmenu

@@ -1,0 +1,365 @@
+menu "Display"
+
+    choice LCD_CONTROLLER_DRIVER
+        prompt "LCD Controller Driver"
+        default LCD_CONTROLLER_ST7789
+        help
+            Select the LCD controller driver to use. There may be an LVGL supported version or a native version listed here
+
+        config LCD_CONTROLLER_ST7789
+            bool "ST7789"
+            help
+                ST7789 LCD controller driver (ESP-IDF native)
+
+        config LCD_CONTROLLER_ST7789_LVGL
+            bool "ST7789 (LVGL)"
+            depends on LV_USE_ST7789
+            help
+                ST7789 LCD controller driver (LVGL)
+    endchoice
+
+    choice LCD_I80_BUS_WIDTH
+        prompt "I80 Bus Width"
+        default LCD_I80_BUS_WIDTH_8
+        help
+            Select the I80 bus width to use. This is the number of data lines used to communicate with the LCD controller
+
+        config LCD_I80_BUS_WIDTH_8
+            bool "8-bit"
+            help
+                8-bit I80 bus width
+
+        config LCD_I80_BUS_WIDTH_16
+            bool "16-bit"
+            help
+                16-bit I80 bus width
+    endchoice
+
+    menu "Display GPIOs"
+        config LCD_I80_DATA_0_GPIO
+            int "Data 0"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 data 0
+
+        config LCD_I80_DATA_1_GPIO
+            int "Data 1"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 data 1
+
+        config LCD_I80_DATA_2_GPIO
+            int "Data 2"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 data 2
+
+        config LCD_I80_DATA_3_GPIO
+            int "Data 3"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 data 3
+
+        config LCD_I80_DATA_4_GPIO
+            int "Data 4"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 data 4
+
+        config LCD_I80_DATA_5_GPIO
+            int "Data 5"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 data 5
+
+        config LCD_I80_DATA_6_GPIO
+            int "Data 6"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 data 6
+
+        config LCD_I80_DATA_7_GPIO
+            int "Data 7"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 data 7
+
+        config LCD_I80_DATA_8_GPIO
+            int "Data 8"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_I80_BUS_WIDTH_16
+            help
+                GPIO pin number for I80 data 8
+
+        config LCD_I80_DATA_9_GPIO
+            int "Data 9"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_I80_BUS_WIDTH_16
+            help
+                GPIO pin number for I80 data 9
+
+        config LCD_I80_DATA_10_GPIO
+            int "Data 10"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_I80_BUS_WIDTH_16
+            help
+                GPIO pin number for I80 data 10
+
+        config LCD_I80_DATA_11_GPIO
+            int "Data 11"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_I80_BUS_WIDTH_16
+            help
+                GPIO pin number for I80 data 11
+
+        config LCD_I80_DATA_12_GPIO
+            int "Data 12"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_I80_BUS_WIDTH_16
+            help
+                GPIO pin number for I80 data 12
+
+        config LCD_I80_DATA_13_GPIO
+            int "Data 13"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_I80_BUS_WIDTH_16
+            help
+                GPIO pin number for I80 data 13
+
+        config LCD_I80_DATA_14_GPIO
+            int "Data 14"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_I80_BUS_WIDTH_16
+            help
+                GPIO pin number for I80 data 14
+
+        config LCD_I80_DATA_15_GPIO
+            int "Data 15"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_I80_BUS_WIDTH_16
+            help
+                GPIO pin number for I80 data 15
+
+        config LCD_I80_RS_GPIO
+            int "Register Select [RS/DC]"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 register select. Sometimes also labeled DC
+
+        config LCD_I80_CS_GPIO
+            int "Chip Select [CS]"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 chip select
+
+        config LCD_I80_RD_GPIO
+            int "Read [RD] (-1 if unused)"
+            default -1
+            range -1 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 read
+
+        config LCD_I80_WR_GPIO
+            int "Write [WR/CLK/PCLK]"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 write. Sometimes also labeled CLK, or PCLK
+
+        config LCD_I80_RESET_GPIO
+            int "Reset [RST]"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            help
+                GPIO pin number for I80 reset
+    endmenu
+
+    config LCD_WIDTH
+        int "Display Width"
+        default 240
+        range 0 4096
+        help
+            Display width in pixels
+
+    config LCD_HEIGHT
+        int "Display Height"
+        default 320
+        range 0 4096
+        help
+            Display height in pixels
+
+    choice LCD_DEFAULT_ORIENTATION
+        prompt "Default display orientation"
+        default LCD_ORIENTATION_LANDSCAPE
+        help
+            Select the display orientation
+
+        config LCD_ORIENTATION_LANDSCAPE
+            bool "Landscape"
+            help
+                Landscape orientation
+
+        config LCD_ORIENTATION_LANDSCAPE_FLIP
+            bool "Landscape (Flipped)"
+            help
+                Landscape (flipped) orientation
+
+        config LCD_ORIENTATION_PORTRAIT
+            bool "Portrait"
+            help
+                Portrait orientation
+
+        config LCD_ORIENTATION_PORTRAIT_FLIP
+            bool "Portrait (Flipped)"
+            help
+                Portrait (flipped) orientation
+    endchoice
+
+    choice LCD_BACKLIGHT_CONTROL
+        prompt "Backlight Control"
+        default LCD_BACKLIGHT_CONTROL_SIMPLE
+        help
+            Select the backlight control method
+
+        config LCD_BACKLIGHT_CONTROL_SIMPLE
+            bool "Simple [on/off]"
+            help
+                Basic on/off backlight control
+
+        config LCD_BACKLIGHT_CONTROL_PWM
+            bool "Adjustable [PWM]"
+            help
+                PWM backlight control
+    endchoice
+
+    config LCD_BACKLIGHT_GPIO
+        int "Backlight GPIO"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        help
+            GPIO pin number for the backlight
+
+    config LCD_TOUCH_ENABLED
+        bool "Touch Enabled"
+        default n
+        help
+            Enable touch support for the display
+
+    choice LCD_TOUCH_CONTROLLER
+        prompt "Touch Controller"
+        default LCD_TOUCH_CONTROLLER_GT911
+        depends on LCD_TOUCH_ENABLED
+        help
+            Select the touch controller to use
+
+        config LCD_TOUCH_CONTROLLER_GT911
+            bool "GT911"
+            help
+                GT911 touch controller. Make sure you install the esp_lcd_touch_gt911 component
+    endchoice
+
+    menu "Touch GPIOs"
+        config LCD_TOUCH_SDA_GPIO
+            int "SDA"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_TOUCH_ENABLED
+            help
+                GPIO pin number for the touch SDA
+
+        config LCD_TOUCH_SCL_GPIO
+            int "SCL"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_TOUCH_ENABLED
+            help
+                GPIO pin number for the touch SCL
+
+        config LCD_TOUCH_USE_INTERRUPT
+            bool "Enable interrupt for touch input rather than polling"
+            default n
+            depends on LCD_TOUCH_ENABLED
+            help
+                Use touch interrupt
+
+        config LCD_TOUCH_INT_GPIO
+            int "Interrupt [INT]"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_TOUCH_ENABLED && LCD_TOUCH_USE_INTERRUPT
+            help
+                GPIO pin number for INT
+
+        config LCD_TOUCH_USE_RST
+            bool "Enable reset pin"
+            default n
+            depends on LCD_TOUCH_ENABLED
+            help
+                Use touch reset
+
+        config LCD_TOUCH_RST_GPIO
+            int "Reset [RST]"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on LCD_TOUCH_ENABLED && LCD_TOUCH_USE_RST
+            help
+                GPIO pin number for RST
+    endmenu
+
+    config LCD_TOUCH_DEBOUNCE_MS
+        int "Touch Debounce Time (ms)"
+        default 30
+        range 0 1000
+        depends on LCD_TOUCH_ENABLED
+        help
+            Touch debounce time in milliseconds
+
+    config LCD_I80_COLOR_IN_PSRAM
+        bool "Color Buffer in PSRAM"
+        default n
+        help
+            Store the color buffer in PSRAM
+
+    config LCD_SWAP_COLOR_BYTES
+        bool "Swap Color Bytes"
+        default n
+        help
+            Swap the color bytes for the display
+
+    choice LCD_SWAP_COLOR_BYTES_IMPL
+        prompt "Color Swap Implementation"
+        default LCD_SWAP_COLOR_DMA
+        depends on LCD_SWAP_COLOR_BYTES
+        help
+            Select the implementation to use for swapping color bytes
+
+        config LCD_SWAP_COLOR_DMA
+            bool "DMA"
+            help
+                Swap color bytes in DMA (fastest)
+
+        config LCD_SWAP_COLOR_LVGL
+            bool "LVGL"
+            help
+                Use LVGL function calls for swapping color bytes
+    endchoice
+
+endmenu

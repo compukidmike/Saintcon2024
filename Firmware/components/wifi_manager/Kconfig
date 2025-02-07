@@ -1,0 +1,29 @@
+menu "WiFi"
+
+    config CONFERENCE_WIFI_SSID
+        string "Conference SSID"
+        default ""
+        help
+          The SSID of the WiFi network to connect to at the conference.
+
+    config CONFERENCE_WIFI_PASSWORD
+        string "Conference Password"
+        default ""
+        help
+          The password for the WiFi network to connect to at the conference.
+
+    config ALLOW_EXTERNAL_WIFI_NETWORKS
+        bool "Allow one or more external WiFi networks to be configured"
+        default n
+        help
+          Allow the user to configure additional WiFi networks to connect to outside of the conference.
+
+    config EXTERNAL_WIFI_MAX_NETWORKS
+        int "Maximum number of external WiFi networks to allow (1-10)"
+        range 1 10
+        default 1
+        depends on ALLOW_EXTERNAL_WIFI_NETWORKS
+        help
+          The maximum number of external WiFi networks that can be configured.
+
+endmenu

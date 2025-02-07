@@ -1,0 +1,39 @@
+menu "Charge Management"
+    config CHARGER_BQ24296M
+        bool "BQ24296M charger"
+        default y
+        help
+          Say Y here if you have a BQ24296M charger IC
+
+    config CHARGER_PSEL_GPIO
+        int "GPIO pin for PSEL"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        depends on CHARGER_BQ24296M
+        help
+          GPIO pin number for PSEL
+
+    config CHARGER_INT_GPIO
+        int "GPIO pin for INT"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        depends on CHARGER_BQ24296M
+        help
+          GPIO pin number for INT
+
+    config CHARGER_OTG_GPIO
+        int "GPIO pin for OTG"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        depends on CHARGER_BQ24296M
+        help
+          GPIO pin number for OTG
+
+    config CHARGER_CE_GPIO
+        int "GPIO pin for CE"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        depends on CHARGER_BQ24296M
+        help
+          GPIO pin number for CE
+endmenu

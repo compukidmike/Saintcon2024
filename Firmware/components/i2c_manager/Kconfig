@@ -1,0 +1,44 @@
+menu "I2C Peripheral"
+
+    config I2C_PERIPHERAL_BUS_ENABLED
+        bool "I2C Peripheral (Secondary) Bus"
+        default n
+        help
+            Enable the I2C peripheral bus.
+
+    menu "I2C Peripheral (Secondary) Bus GPIOs"
+        config I2C_PERIPHERAL_SDA_GPIO
+            int "SDA"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on I2C_PERIPHERAL_BUS_ENABLED
+            help
+                Pin to use for the I2C peripheral bus SDA line.
+
+        config I2C_PERIPHERAL_SCL_GPIO
+            int "SCL"
+            default 0
+            range 0 SOC_GPIO_PIN_COUNT
+            depends on I2C_PERIPHERAL_BUS_ENABLED
+            help
+                Pin to use for the I2C peripheral bus SCL line.
+    endmenu
+
+    menu "I2C Switch Configuration"
+        config I2C_SWITCH_ENABLED
+            bool "I2C Switch Peripheral (TCA9548A)"
+            default n
+            depends on I2C_PERIPHERAL_BUS_ENABLED
+            help
+                Enable the I2C switch.
+
+        config I2C_SWITCH_INT_GPIO
+            int "INT Pin (-1 to disable)"
+            default -1
+            range -1 SOC_GPIO_PIN_COUNT
+            depends on I2C_SWITCH_ENABLED
+            help
+                Pin to use for the I2C switch interrupt.
+    endmenu
+
+endmenu

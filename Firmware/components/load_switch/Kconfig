@@ -1,0 +1,8 @@
+menu "Load Switch"
+    config LOAD_SWITCH_EN_GPIO
+        int "Load Switch EN GPIO"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        help
+            GPIO number to use for load switch
+endmenu

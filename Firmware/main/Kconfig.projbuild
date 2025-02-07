@@ -1,0 +1,40 @@
+menu "Badge Configuration"
+
+    # Display configuration menu
+    rsource "../components/display/Kconfig"
+
+    # I2C configuration menu
+    rsource "../components/i2c_manager/Kconfig"
+
+    # WiFi configuration menu
+    rsource "../components/wifi_manager/Kconfig"
+
+    # Type C configuration menu
+    rsource "../components/type_c/Kconfig"
+
+    # Charger configuration menu
+    rsource "../components/charger/Kconfig"
+
+    # IR configuration menu
+    rsource "../components/ir_comm/Kconfig"
+
+    # Load Switch configuration menu
+    rsource "../components/load_switch/Kconfig"
+
+    menu "Other"
+        # Badge hardware version
+        choice BADGE_HW_VERSION
+            prompt "Hardware Version"
+            default BADGE_HW_VERSION_3
+            help
+                The hardware version of the badge.
+
+            config BADGE_HW_VERSION_2
+                bool "Version 2"
+
+            config BADGE_HW_VERSION_3
+                bool "Final Version"
+        endchoice
+    endmenu
+
+endmenu

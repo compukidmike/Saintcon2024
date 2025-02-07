@@ -1,0 +1,21 @@
+menu "IR Tx/Rx"
+    config IR_TX_GPIO
+        int "IR Transmitter GPIO"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        help
+            GPIO number to use for IR transmitter
+
+    config IR_RX_GPIO
+        int "IR Receiver GPIO"
+        default 0
+        range 0 SOC_GPIO_PIN_COUNT
+        help
+            GPIO number to use for IR receiver
+
+    config IR_RX_BUFFER_SIZE
+        int "IR Receiver buffer size"
+        default 256
+        help
+            Size of the buffer used to store received IR data
+endmenu
